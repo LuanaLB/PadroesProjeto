@@ -3,39 +3,41 @@ package com.example;
 import java.util.List;
 import java.util.function.Function;
 
-public class ExportadorListaCsv<T> extends AbstractExportadorLista<T> {
+public class ExportadorListaHtml<T> extends AbstractExportadorLista<T> {
 
-    public ExportadorListaCsv(List<T> lista) {
+    public ExportadorListaHtml(List<T> lista) {
         super(lista);
     }
 
     @Override
     public String abrirTabela() {
-        return "";
+        return "<table>\n";
     }
 
     @Override
     public String fecharTabela() {
-        return "";
+        return "</table>";
     }
 
     @Override
     public String abrirLinha() {
-        return "";
+        return "<tr>";
     }
 
     @Override
     public String fecharLinha() {
-        return "\n";
+        return "</tr>\n";
     }
 
     @Override
     public String abrirLinhaTitulos() {
-        return "";
+        return "<thead>";
     }
 
     @Override
-    public String fecharLinhaTitulos() {return ",";}
+    public String fecharLinhaTitulos() {
+        return "</thead>\n";
+    }
 
     @Override
     public void addNewColuna(Function<T, String> funcaoValorColuna, String titulo) {

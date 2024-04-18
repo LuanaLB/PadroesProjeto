@@ -3,15 +3,15 @@ package com.example;
 import java.util.List;
 import java.util.function.Function;
 
-public class ExportadorListaCsv<T> extends AbstractExportadorLista<T> {
+public class ExportadorListaMarkdown<T> extends AbstractExportadorLista<T> {
 
-    public ExportadorListaCsv(List<T> lista) {
+    public ExportadorListaMarkdown(List<T> lista) {
         super(lista);
     }
 
     @Override
     public String abrirTabela() {
-        return "";
+        return "|";
     }
 
     @Override
@@ -21,12 +21,12 @@ public class ExportadorListaCsv<T> extends AbstractExportadorLista<T> {
 
     @Override
     public String abrirLinha() {
-        return "";
+        return "\n";
     }
 
     @Override
     public String fecharLinha() {
-        return "\n";
+        return "";
     }
 
     @Override
@@ -35,10 +35,12 @@ public class ExportadorListaCsv<T> extends AbstractExportadorLista<T> {
     }
 
     @Override
-    public String fecharLinhaTitulos() {return ",";}
+    public String fecharLinhaTitulos() {
+        return "";
+    }
 
     @Override
     public void addNewColuna(Function<T, String> funcaoValorColuna, String titulo) {
-       addColuna(new ColunaHtml<T>(titulo, funcaoValorColuna));
+        addColuna( new ColunaMd<>(funcaoValorColuna, titulo));
     }
 }
