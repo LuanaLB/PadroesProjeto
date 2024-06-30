@@ -1,2 +1,5 @@
-package com.manoelcampos.desconto;public class DescontoStrategy {
+package com.manoelcampos.desconto;
+
+interface DescontoStrategy {
+    double calcularDesconto(double valorTotal, Cliente cliente);
 }
